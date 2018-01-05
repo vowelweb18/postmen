@@ -18,13 +18,24 @@
 	$datas = json_decode($content, true);
 
 //Fetch Tracking ID
-	$tracking_id = $datas['data']['tracking_numbers'][0];
+	$tracking_ids = $datas['data']['tracking_numbers'];
+	$tracking_id = '';
+	foreach ($tracking_ids as $value) {
+		# code...
+		$tracking_id .= $value.' , ';
+	}
 
 //Check For canpar
 	$is_canpar = $datas['data']['rate']['shipper_account']['slug'];
 
 //Reference Id
-	$ref = $datas['data']['references'][0];
+	$refs = $datas['data']['references'];
+	$ref = '';
+	foreach ($refs as $ref_value) {
+		# code...
+		$ref .= $ref_value.' , ';
+		
+	}
 
 //Current Time
 	$now = date('Y-m-d H:i:s');
